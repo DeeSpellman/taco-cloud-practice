@@ -54,7 +54,8 @@ public class DesignTacoController {
     }
 
     @GetMapping
-    public String showDesignForm() {
+    public String showDesignForm(Model model) {
+        model.addAttribute("design", new Taco());
         return "design";
     }
 
