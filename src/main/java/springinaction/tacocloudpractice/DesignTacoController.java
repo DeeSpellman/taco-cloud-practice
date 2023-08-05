@@ -18,7 +18,10 @@ import springinaction.tacocloudpractice.Ingredient.Type;
 import springinaction.tacocloudpractice.Taco;
 import springinaction.tacocloudpractice.TacoOrder;
 
-@Slf4j @Controller @RequestMapping("/design") @SessionAttributes("tacoOrder")
+@Slf4j
+@Controller
+@RequestMapping("/design")
+@SessionAttributes("tacoOrder")
 public class DesignTacoController {
     @ModelAttribute
     public void addIngredientsToModel(Model model) {
@@ -44,17 +47,18 @@ public class DesignTacoController {
     public TacoOrder order() {
         return new TacoOrder();
     }
+
     @ModelAttribute(name = "taco")
     public Taco taco() {
         return new Taco();
     }
+
     @GetMapping
     public String showDesignForm() {
         return "design";
     }
+
     private Iterable<Ingredient> filterByType(List<Ingredient> ingredients, Type type) {
         return ingredients.stream().filter(x -> x.getType().equals(type)).collect(Collectors.toList());
     }
 }
-
-
